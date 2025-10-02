@@ -5,6 +5,8 @@ import lombok.*;
 
 import java.util.List;
 
+import jakarta.validation.constraints.*;
+
 @Entity
 @Table(name = "categorias")
 @Data
@@ -18,6 +20,8 @@ public class Categoria {
     private Long idCategoria;
 
     @Column(nullable = false, length = 100)
+    @NotBlank
+    @Size(max = 100)
     private String nombre;
 
     private String descripcion;
