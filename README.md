@@ -4,4 +4,5 @@ Este es el proyecto **backend** de PixelPro, desarrollado con **Spring Boot** (J
 Se ejecuta con **Tomcat embebido** y expone la API REST.
 
 ## 🔗 Proyecto relacionado
-[PixelPro Frontend](https://github.com/juanpbc8/pixelpro-frontend)
+
+[PixelPro Frontend](https://github.com/JurgensAlemy/pixelpro-v2)
