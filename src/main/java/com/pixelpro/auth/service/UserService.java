@@ -6,25 +6,18 @@ import com.pixelpro.auth.entity.UserEntity;
 import com.pixelpro.auth.repository.RoleRepository;
 import com.pixelpro.auth.repository.UserRepository;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
-
-
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
-
-
-    public UserService(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
 
     @Transactional
     public UserEntity register(String email, String rawPassword, Set<RoleEnum> roles) {
@@ -36,8 +29,7 @@ public class UserService {
                 .passwordHash(passwordEncoder.encode(rawPassword))
                 .build();
 //        user.setEnabled(true);
-
-
+        
         // Roles por defecto
         if (roles == null || roles.isEmpty()) {
             RoleEntity userRole = roleRepository.findByRole(RoleEnum.CUSTOMER)
